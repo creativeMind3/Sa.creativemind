@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&A CreativeMind | Premium Digital Designs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-surface: rgba(255, 255, 255, 0.03);
+            --bg-surface-hover: rgba(255, 255, 255, 0.07);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --primary: #6366f1;
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --accent: #a855f7;
+            --glass-blur: blur(12px);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-surface: rgba(0, 0, 0, 0.03);
+            --bg-surface-hover: rgba(0, 0, 0, 0.06);
+            --border-color: rgba(0, 0, 0, 0.1);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            transition: var(--transition);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary-gradient);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
+        body::before { top: 10%; left: -100px; }
+        body::after { top: 60%; right: -100px; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--bg-surface);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-surface-hover);
+            transform: translateY(-2px);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 15, 25, 0.7);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .navbar {
+            background: rgba(248, 250, 252, 0.8);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-main);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-surface);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            padding: 160px 0 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            padding: 6px 16px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            max-width: 800px;
+            margin: 0 auto 24px auto;
+        }
+
+        .hero h1 span {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 40px 32px;
+            border-radius: 16px;
+            transition: var(--transition);
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            background: var(--bg-surface-hover);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            color: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .portfolio-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 240px;
+            background: #111827;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 2;
+        }
+
+        .portfolio-placeholder {
+            position: absolute;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        .portfolio-info {
+            padding: 24px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .video-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Interactive CBT App Showcase Engine Styles */
+        .cbt-showcase-container {
+            background: #0f172a;
+            color: #f8fafc;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            margin-top: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .cbt-header {
+            background: #1e293b;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cbt-header h2 { font-size: 1.2rem; font-weight: 700; color: #ffffff; }
+        .cbt-header span { font-size: 0.85rem; color: #94a3b8; }
+        
+        .cbt-timer {
+            background: #ef4444;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .cbt-body {
+            display: grid;
+            grid-template-columns: 1fr 260px;
+        }
+
+        @media (max-width: 768px) {
+            .cbt-body { grid-template-columns: 1fr; }
+        }
+
+        .cbt-main { padding: 32px; border-right: 1px solid rgba(255,255,255,0.1); position: relative; }
+        .q-number { font-size: 0.8rem; color: #818cf8; font-weight: 600; text-transform: uppercase; }
+        .q-text { font-size: 1.1rem; font-weight: 500; margin: 8px 0 24px 0; line-height: 1.6; color: #ffffff; }
+        .options-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+        
+        .option-item {
+            display: flex;
+            align-items: center;
+            background: #1e293b;
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 14px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option-item:hover { background: #273549; }
+        .option-item.selected { background: #312e81; border-color: #6366f1; }
+        .option-item input { margin-right: 14px; transform: scale(1.1); cursor: pointer; }
+        .option-mark { font-weight: 700; color: #818cf8; margin-right: 8px; }
+        .option-text { color: #cbd5e1; font-size: 0.95rem; }
+        .cbt-actions { display: flex; gap: 12px; }
+
+        .cbt-sidebar { padding: 32px; background: #111827; display: flex; flex-direction: column; }
+        .cbt-sidebar h3 { font-size: 0.9rem; margin-bottom: 16px; color: #94a3b8; }
+        .q-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 24px; }
+        
+        .grid-num {
+            background: #1e293b;
+            border: 1px solid rgba(255,255,255,0.1);
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: #cbd5e1;
+            transition: all 0.2s;
+        }
+
+        .grid-num.active { border: 2px solid #6366f1; }
+        .grid-num.answered { background: #065f46; color: #a7f3d0; border-color: transparent; }
+        .grid-num.answered.active { border: 2px solid #34d399; }
+        
+        .btn-submit-exam {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.2s;
+        }
+
+        .btn-submit-exam:hover { opacity: 0.9; }
+
+        .cbt-results {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .results-score {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #34d399;
+            margin: 16px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .contact-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            color: var(--primary);
+        }
+
+        .contact-form {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 16px;
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .form-control {
+            background: #ffffff;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            background: rgba(11, 15, 25, 0.9);
+        }
+
+        [data-theme="light"] .footer {
+            background: #f1f5f9;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            color: #ffffff;
+            background: var(--primary-gradient);
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+            z-index: 999;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5);
+        }
+
+        .fade-in {
+            opacity: 0.05;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 992px) {
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero h1 { font-size: 2.8rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 40px;
+                gap: 24px;
+                transition: var(--transition);
+                border-top: 1px solid var(--border-color);
+                align-items: flex-start;
+            }
+
+            .nav-menu.active { left: 0; }
+            .menu-toggle { display: block; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+            .hero-btns { flex-direction: column; gap: 12px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .footer-container { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/2348124483919" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> S&A <span>CreativeMind</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero section">
+        <div class="container">
+            <div class="hero-badge">💡 S&A CreativeMind ✨️</div>
+            <h1>Elevating Your Brand with <span>Premium, Creative Designs</span>.</h1>
+            <p>Logos • Flyers • Invitations • Video Invitations • Simple Websites • CBT Exam Software</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Get Started</a>
+                <a href="#services" class="btn btn-secondary">What We Do</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section fade-in" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title" style="text-align: left; margin-left: 0;">Who We Are</h2>
+                    <p>At S&A CreativeMind, we help brands stand out through dynamic layout art and clean visual asset kits. Whether you need striking print invitations or intuitive internal testing engines, we make your corporate image high-contrast, beautiful, and completely clear.</p>
+                    <p>We combine advanced cross-platform visual concepts with clean native tools to map corporate styles directly tailored to individual project parameters.</p>
+                    <a href="#contact" class="btn btn-primary">Start Your Project</a>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Brands Launched</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Clear Design</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section fade-in" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Premium multimedia designs and optimized system frameworks customized for your target needs.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-bezier-curve"></i></div>
+                    <h3>Logos & Flyers</h3>
+                    <p>High-contrast, memorable layout identity systems and graphic assets constructed cleanly to define brand aesthetics.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                    <h3>Invitations & Video Invites</h3>
+                    <p>Elegant digital print invitations and dynamic video layouts mapped smoothly for personal and corporate events.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3>Simple Website Design</h3>
+                    <p>Clean, high-performance landing pages and portfolios built cleanly to present your product workflows to users.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>CBT Exam Software</h3>
+                    <p>Secure, lightweight testing platforms engineered cleanly to manage question engines and parallel test trackers seamlessly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section fade-in" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Our Design Portfolio</h2>
+            <p class="section-subtitle">Explore real layout designs and live digital software concepts from our workspace portfolio.</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <img src="Logo.png" alt="Premium Brand Identity Work" onerror="this.style.opacity='0';">
+                        <div class="portfolio-placeholder"><i class="fa-solid fa-crown" style="font-size:2rem; margin-bottom:8px; color:var(--primary);"></i><br>[ Upload Logo Design Image From Device ]</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Premium Logos & Icons</h3>
+                        <p>Modern visual branding kits built cleanly from initial scratch guidelines to clean vector files.</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <img src="flyer.jpg" alt="Corporate Event Flyer Artwork"  onerror="this.style.opacity='0';">
+                        <div class="portfolio-placeholder"><i class="fa-solid fa-layer-group" style="font-size:2rem; margin-bottom:8px; color:var(--primary);"></i><br>[ Upload Flyer Layout From Device ]</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Event Flyer Layouts</h3>
+                        <p>High-impact structural event flyers arranged with focus on clear messaging and contrast details.</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <img src="IV.jpg" alt="Premium Digital Card Invitation" onerror="this.style.opacity='0';">
+                        <div class="portfolio-placeholder"><i class="fa-solid fa-envelope-open-text" style="font-size:2rem; margin-bottom:8px; color:var(--primary);"></i><br>[ Upload Invitation Card Image From Device ]</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Digital Invitations</h3>
+                        <p>Premium printable digital announcement graphics crafted carefully for luxury aesthetic profiles.</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <div class="video-container">
+                            <video controls poster="images/video-thumbnail.jpg" muted loop>
+                                <source src="S&A1.mp4" type="video/mp4">
+                                [ Video Display Frame ]
+                            </video>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Video Invitation Previews</h3>
+                        <p>Dynamic 1080×1920 portrait animation timelines designed with typography effects.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; font-size: 1.6rem; margin-top: 60px; margin-bottom: 10px;">Fully Interactive CBT Software Showcase</h3>
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">Test our live functional sandbox testing system. Choose answers and view your real-time results instantly.</p>
+            
+            <div class="cbt-showcase-container">
+                <div class="cbt-header">
+                    <div class="exam-info">
+                        <h2>S&A CreativeMind Evaluation Portal</h2>
+                        <span>Session Tracker Code: <strong id="sessionCode">SANDBOX-2026</strong></span>
+                    </div>
+                    <div class="cbt-timer" id="examTimer">60:00</div>
+                </div>
+
+                <div class="cbt-body">
+                    <div class="cbt-main" id="cbtMainPanel">
+                        <div class="question-box">
+                            <span class="q-number" id="qNumberDisplay">Loading Question...</span>
+                            <p class="q-text" id="qTextDisplay"></p>
+                        </div>
+
+                        <div class="options-list" id="optionsContainer">
+                            </div>
+
+                        <div class="cbt-actions">
+                            <button type="button" class="btn btn-secondary" id="btnPrev" style="padding: 8px 18px; font-size:0.85rem;" onclick="navigateQuestion(-1)">Previous</button>
+                            <button type="button" class="btn btn-primary" id="btnNext" style="padding: 8px 18px; font-size:0.85rem;" onclick="navigateQuestion(1)">Save & Next</button>
+                        </div>
+                    </div>
+
+                    <div class="cbt-sidebar">
+                        <h3>Progress Map</h3>
+                        <div class="q-grid" id="questionGridNav">
+                            </div>
+                        <button type="button" class="btn-submit-exam" style="margin-top:20px;" onclick="submitExam()">Submit Exam</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section fade-in" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's Create Something Great</h3>
+                    <p>Ready to update your corporate media, design an invitation kit, or install custom software frameworks? Reach out directly below.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Email Us</p>
+                                <a href="mailto:sacreativemind0123@gmail.com" class="contact-link">sacreativemind0123@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Call Us</p>
+                                <a href="tel:08124483919" class="contact-link">0812 448 3919</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                            <div>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">WhatsApp Instant</p>
+                                <a href="https://wa.me/2348124483919" target="_blank" class="contact-link">Chat Directly</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/maqgwpzr" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="john@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Requirements</label>
+                        <textarea id="message" name="message" class="form-control" placeholder="Describe the design or software layout you need built..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 S&A CreativeMind. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://wa.me/2348124483919" class="social-icon" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                 <a href="mailto:sacreativemind0123@gmail.com" class="social-icon" aria-label="Email"><i class="fa-solid fa-envelope"></i
+                 ></a>
+                <a href="https://www.instagram.com/sa.creativemind" class="social-icon" aria-label="instagram">
+    <i class="fab fa-instagram"></i>
+    </a>
+            </div>
+            </div>
+            
+           
+        </div>
+    </footer>
+
+    <script>
+        // UI & Themes Handler Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navbar = document.querySelector('.navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const animatedElements = document.querySelectorAll('.fade-in');
+
+        function checkVisibilityInitially() {
+            animatedElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+        });
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if(navMenu.classList.contains('active')) {
+                icon.className = 'fa-solid fa-xmark';
+            } else {
+                icon.className = 'fa-solid fa-bars';
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.querySelector('i').className = 'fa-solid fa-bars';
+            });
+        });
+
+        const revealOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05 });
+
+        animatedElements.forEach(element => { revealOnScroll.observe(element); });
+        window.addEventListener('load', checkVisibilityInitially);
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section, header');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id') || '';
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current || (current === '' && link.getAttribute('href') === '#')) {
+                    link.classList.add('active');
+                }
+            });
+
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // --- INTERACTIVE CBT APPLICATION SOFTWARE CORE DATABASE ---
+        const cbtQuestions = [
+            {
+                text: "Which design framework option ensures text colors match device background switches perfectly?",
+                options: { A: "Static opaque image blocks", B: "Low color contrast ratio specs", C: "High contrast variable parameters mapping back to base layers", D: "Removing padding constraints" },
+                correct: "C"
+            },
+            {
+                text: "What is the standard vertical viewport size aspect ratio recommended for premium smartphone invitation templates?",
+                options: { A: "1080 x 1080 pixels", B: "1920 x 1080 pixels", C: "1080 x 1920 pixels", D: "600 x 800 pixels" },
+                correct: "C"
+            },
+            {
+                text: "Which file structure format is optimal for vector brand marks such as company logos?",
+                options: { A: "Highly compressed JPG templates", B: "Scalable Vector Graphics (SVG) or master design files", C: "Animated heavy GIF timelines", D: "Low resolution BMP bitmaps" },
+                correct: "B"
+            },
+            {
+                text: "In interactive CBT system software, what visual element ensures test takers track completeness clearly?",
+                options: { A: "Hiding previous submission variables", B: "Color-coded question grids mapping answered status", C: "Removing header timers completely", D: "Disabling manual radio buttons" },
+                correct: "B"
+            }
+        ];
+
+        let currentQuestionIdx = 0;
+        let userSelections = {}; 
+        let examTimerInterval = null;
+
+        function initCBTApp() {
+            renderQuestionNavMap();
+            loadQuestion(0);
+            startCBTCountDown(60 * 60);
+        }
+
+        function renderQuestionNavMap() {
+            const gridNav = document.getElementById('questionGridNav');
+            gridNav.innerHTML = '';
+            cbtQuestions.forEach((_, idx) => {
+                const mapCell = document.createElement('div');
+                mapCell.className = `grid-num ${idx === currentQuestionIdx ? 'active' : ''}`;
+                mapCell.id = `nav-cell-${idx}`;
+                mapCell.textContent = idx + 1;
+                mapCell.onclick = () => loadQuestion(idx);
+                gridNav.appendChild(mapCell);
+            });
+        }
+
+        function loadQuestion(idx) {
+            if (idx < 0 || idx >= cbtQuestions.length) return;
+            
+            // Remove active style state indicators
+            document.getElementById(`nav-cell-${currentQuestionIdx}`).classList.remove('active');
+            currentQuestionIdx = idx;
+            document.getElementById(`nav-cell-${currentQuestionIdx}`).classList.add('active');
+
+            const qData = cbtQuestions[idx];
+            document.getElementById('qNumberDisplay').textContent = `Question ${idx + 1} of ${cbtQuestions.length}`;
+            document.getElementById('qTextDisplay').textContent = qData.text;
+
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+
+            Object.entries(qData.options).forEach(([key, val]) => {
+                const label = document.createElement('label');
+                label.className = `option-item ${userSelections[idx] === key ? 'selected' : ''}`;
+                
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'interactive-cbt-q';
+                radio.value = key;
+                radio.checked = userSelections[idx] === key;
+                
+                radio.onchange = () => selectOption(idx, key);
+
+                const marker = document.createElement('span');
+                marker.className = 'option-mark';
+                marker.textContent = `${key}`;
+
+                const textSpan = document.createElement('span');
+                textSpan.className = 'option-text';
+                textSpan.textContent = val;
+
+                label.appendChild(radio);
+                label.appendChild(marker);
+                label.appendChild(textSpan);
+                container.appendChild(label);
+            });
+
+            // Sync structural action indicators
+            document.getElementById('btnPrev').disabled = idx === 0;
+            document.getElementById('btnNext').textContent = idx === cbtQuestions.length - 1 ? 'Finish review' : 'Save & Next';
+        }
+
+        function selectOption(qIdx, key) {
+            userSelections[qIdx] = key;
+            
+            // Update question grid cell style instantly
+            const cell = document.getElementById(`nav-cell-${qIdx}`);
+            if(cell) cell.classList.add('answered');
+
+            // Refresh choice layout styles wrapper highlights
+            const items = document.querySelectorAll('.option-item');
+            items.forEach(item => {
+                const radio = item.querySelector('input');
+                if(radio && radio.checked) {
+                    item.classList.add('selected');
+                } else {
+                    item.classList.remove('selected');
+                }
+            });
+        }
+
+        function navigateQuestion(step) {
+            let nextIndex = currentQuestionIdx + step;
+            if(nextIndex >= 0 && nextIndex < cbtQuestions.length) {
+                loadQuestion(nextIndex);
+            }
+        }
+
+        function submitExam() {
+            clearInterval(examTimerInterval);
+            let absoluteScore = 0;
+            
+            cbtQuestions.forEach((q, index) => {
+                if(userSelections[index] === q.correct) {
+                    absoluteScore++;
+                }
+            });
+
+            const percentageValue = Math.round((absoluteScore / cbtQuestions.length) * 100);
+            
+            // Inject complete custom results layout layer inside main workspace container element
+            const mainPanel = document.getElementById('cbtMainPanel');
+            mainPanel.innerHTML = `
+                <div class="cbt-results">
+                    <i class="fa-solid fa-square-poll-vertical" style="font-size: 3.5rem; color:#6366f1; margin-bottom: 12px;"></i>
+                    <h2>Session Completed Successfully</h2>
+                    <p style="color: var(--text-muted); margin-top:4px;">Your response evaluation details computed below</p>
+                    <div class="results-score">${percentageValue}%</div>
+                    <p style="font-size:1rem; color:#cbd5e1; margin-bottom:20px;">You answered <strong>${absoluteScore}</strong> out of <strong>${cbtQuestions.length}</strong> questions correctly.</p>
+                    <button class="btn btn-primary" onclick="resetCBTDemo()">Restart Examination Demo Process</button>
+                </div>
+            `;
+        }
+
+        function resetCBTDemo() {
+            userSelections = {};
+            currentQuestionIdx = 0;
+            
+            // Restore structural interactive frame markup parameters clean
+            const mainPanel = document.getElementById('cbtMainPanel');
+            mainPanel.innerHTML = `
+                <div class="question-box">
+                    <span class="q-number" id="qNumberDisplay">Loading Question...</span>
+                    <p class="q-text" id="qTextDisplay"></p>
+                </div>
+                <div class="options-list" id="optionsContainer"></div>
+                <div class="cbt-actions">
+                    <button type="button" class="btn btn-secondary" id="btnPrev" style="padding: 8px 18px; font-size:0.85rem;" onclick="navigateQuestion(-1)">Previous</button>
+                    <button type="button" class="btn btn-primary" id="btnNext" style="padding: 8px 18px; font-size:0.85rem;" onclick="navigateQuestion(1)">Save & Next</button>
+                </div>
+            `;
+            initCBTApp();
+        }
+
+        function startCBTCountDown(durationSecs) {
+            let duration = durationSecs;
+            const display = document.getElementById('examTimer');
+            if(examTimerInterval) clearInterval(examTimerInterval);
+
+            examTimerInterval = setInterval(() => {
+                let minutes = parseInt(duration / 60, 10);
+                let seconds = parseInt(duration % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                display.textContent = minutes + ":" + seconds;
+                
+                if (--duration < 0) { 
+                    clearInterval(examTimerInterval);
+                    alert("Time expired! Your data is submitting automatically.");
+                    submitExam();
+                }
+            }, 1000);
+        }
+
+        // Run application script hooks on load
+        window.addEventListener('DOMContentLoaded', () => {
+            initCBTApp();
+        });
+    </script>
+</body>
+</html>
